@@ -151,7 +151,7 @@
   <header class="doc-head">
     <p class="eyebrow">Delta · Saldo da Conta (Tesouraria)</p>
     <h1>Política de Privacidade</h1>
-    <p class="subtitle">Extensão de navegador para Chrome · Versão 0.2.0 · Atualizada em 23 de outubro de 2026</p>
+    <p class="subtitle">Extensão de navegador para Chrome · Versão 0.3.0 · Atualizada em 23 de outubro de 2026</p>
   </header>
 
   <section class="summary">
@@ -160,18 +160,18 @@
       <dt>O que a extensão faz</dt>
       <dd>Na tela de pagamento do Tesouraria (Cloud), da Betha, mostra o saldo da conta bancária escolhida e o saldo de cada recurso nessa conta. Se o usuário ligar o parâmetro, desabilita o Salvar quando o saldo do recurso não cobre o pagamento.</dd>
       <dt>Onde ela funciona</dt>
-      <dd><code>tesouraria.betha.cloud</code> e a API <code>tes-api-rest.betha.cloud</code> — em nenhum outro site.</dd>
+      <dd>Só na tela do Tesouraria (<code>tesouraria.betha.cloud</code>). Conversa apenas com a API do Tesouraria (<code>tes-api-rest.betha.cloud</code>), com a lista de acessos da Betha (<code>plataforma-autorizacoes.betha.cloud</code>) e com o Catálogo de Soluções da Delta (<code>catalogodesolucoes.deltainf.com.br</code>), para conferir a licença.</dd>
       <dt>Dados que ela lê</dt>
       <dd>Cabeçalhos de autenticação da sua própria sessão já logada, as contas, recursos e valores do pagamento aberto na tela, e os saldos retornados pela API.</dd>
       <dt>Para onde esses dados vão</dt>
-      <dd>Para lugar nenhum além da própria API da Betha que você já usa. Nada é enviado a servidores da Delta ou de terceiros.</dd>
+      <dd>Os saldos ficam na sua tela. Para conferir a licença, o token da sua sessão é enviado ao Catálogo de Soluções da Delta, junto com o número da entidade, e a Delta registra que houve a verificação. Nada vai para terceiros.</dd>
       <dt>O que fica guardado</dt>
       <dd>Só a sua preferência "Desabilitar o Salvar sem saldo no recurso" (ligada ou desligada), no armazenamento do próprio Chrome. Nenhum saldo, senha ou dado do pagamento é gravado.</dd>
     </dl>
     <div class="never">
       <p>Esta extensão nunca:</p>
       <ul>
-        <li>Envia dado para qualquer servidor que não seja o da própria Betha.</li>
+        <li>Envia saldo, conta, recurso ou valor de pagamento para fora da Betha.</li>
         <li>Grava, sincroniza ou faz backup de saldo, senha, token ou dado de pagamento.</li>
         <li>Salva, altera ou confirma pagamentos — no máximo desabilita o botão Salvar, se você ligar essa opção.</li>
         <li>Roda em nenhum site além do Tesouraria (Cloud).</li>
@@ -205,6 +205,9 @@
     <li>
       <strong>Saldos</strong> que a API da Betha devolve para cada conta e para cada recurso dessa conta.
     </li>
+    <li>
+      <strong>Sua lista de acessos na Betha</strong>, só para descobrir qual entidade está aberta na tela.
+    </li>
   </ul>
 
   <h2>Como esses dados são usados</h2>
@@ -221,8 +224,19 @@
     para o valor a pagar.
   </p>
   <p>
-    Não existe envio de dado pra fora do navegador além dessas consultas — que são exatamente as
-    mesmas que a tela nativa da Betha faz quando você usa a Gestão Bancária manualmente.
+    As consultas de saldo são exatamente as mesmas que a tela nativa da Betha faz quando você usa a
+    Gestão Bancária manualmente.
+  </p>
+
+  <h2>Verificação de licença</h2>
+  <p>
+    A extensão é licenciada por entidade. Ao abrir um pagamento, ela pergunta ao Catálogo de Soluções da
+    Delta (<code>catalogodesolucoes.deltainf.com.br</code>) se a entidade da tela tem a extensão liberada.
+    Para isso envia o token da sua sessão na Betha (que o Catálogo usa só para confirmar com a própria
+    Betha quem você é e se você tem acesso à entidade) e o número da entidade. A Delta registra a
+    verificação — entidade, usuário, data e resultado — para controle das liberações. Saldos, contas,
+    recursos e valores de pagamento nunca são enviados ao Catálogo. A resposta fica só na memória do
+    navegador, por alguns minutos; sem liberação, a extensão não mostra saldos nem desabilita o Salvar.
   </p>
 
   <h2>O que fica guardado</h2>
@@ -233,17 +247,21 @@
   </p>
 
   <h2>Permissões do navegador</h2>
-  <p>A extensão pede três permissões, nenhuma de acesso amplo à navegação:</p>
+  <p>A extensão pede estas permissões, nenhuma de acesso amplo à navegação:</p>
   <ul>
     <li><code>tesouraria.betha.cloud/*</code> — pra poder ler a tela de pagamento e mostrar os saldos ali.</li>
     <li><code>tes-api-rest.betha.cloud/*</code> — pra poder chamar a API de saldo com os mesmos
       cabeçalhos que o próprio site usa.</li>
+    <li><code>catalogodesolucoes.deltainf.com.br/*</code> — pra conferir a licença no Catálogo da Delta.</li>
+    <li><code>plataforma-autorizacoes.betha.cloud/*</code> — pra ler a sua lista de acessos e descobrir a
+      entidade da tela.</li>
     <li><code>storage</code> — pra guardar a preferência descrita acima.</li>
   </ul>
 
   <h2>Compartilhamento com terceiros</h2>
-  <p>Nenhum. A extensão não vende, aluga, transfere nem compartilha nenhum dado com ninguém — nem
-    com a própria Delta. Não há coleta de analytics, publicidade ou qualquer serviço externo embutido.</p>
+  <p>Nenhum. A extensão não vende, aluga, transfere nem compartilha dados com terceiros. A Delta só
+    recebe o necessário para a verificação de licença, descrito acima. Não há coleta de analytics,
+    publicidade ou qualquer serviço externo embutido.</p>
 
   <h2>Alterações nesta política</h2>
   <p>Qualquer mudança relevante no que a extensão acessa ou faz será refletida nesta página, com a
