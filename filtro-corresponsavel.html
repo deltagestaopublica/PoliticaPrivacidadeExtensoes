@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Política de Privacidade — Filtro de Corresponsável (Procuradoria)</title>
+    <style>
+      :root {
+        color-scheme: light dark;
+        --tinta: #1b2230;
+        --tinta-2: #4a5568;
+        --fundo: #ffffff;
+        --linha: #e2e8f0;
+        --destaque: #0b37a8;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --tinta: #e8edf5;
+          --tinta-2: #a8b3c4;
+          --fundo: #12161f;
+          --linha: #2a3242;
+          --destaque: #8fb0ff;
+        }
+      }
+      body {
+        margin: 0 auto;
+        max-width: 42rem;
+        padding: 3rem 1.5rem 5rem;
+        background: var(--fundo);
+        color: var(--tinta);
+        font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+        font-size: 1rem;
+        line-height: 1.65;
+      }
+      h1 {
+        margin: 0 0 0.25rem;
+        font-size: 1.6rem;
+        line-height: 1.25;
+      }
+      h2 {
+        margin: 2.5rem 0 0.75rem;
+        padding-top: 1.25rem;
+        border-top: 1px solid var(--linha);
+        font-size: 1.15rem;
+      }
+      .sub {
+        margin: 0 0 2rem;
+        color: var(--tinta-2);
+      }
+      ul {
+        padding-left: 1.25rem;
+      }
+      li {
+        margin: 0.4rem 0;
+      }
+      code {
+        padding: 0.1em 0.35em;
+        border-radius: 4px;
+        background: color-mix(in srgb, var(--tinta) 8%, transparent);
+        font-size: 0.9em;
+      }
+      strong {
+        color: var(--tinta);
+      }
+      footer {
+        margin-top: 3rem;
+        padding-top: 1.25rem;
+        border-top: 1px solid var(--linha);
+        color: var(--tinta-2);
+        font-size: 0.9rem;
+      }
+      a {
+        color: var(--destaque);
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Política de Privacidade</h1>
+    <p class="sub">
+      Extensão <strong>Filtro de Corresponsável — Dívidas (Procuradoria)</strong>, da Delta
+      Soluções em Informática. Última atualização: 16 de setembro de 2026.
+    </p>
+
+    <p>
+      A extensão acrescenta o filtro “Corresponsável: Sim / Não” à tela de Dívidas do
+      Procuradoria Cloud (Betha). Ela funciona <strong>inteiramente dentro do seu
+      navegador</strong> e é <strong>somente leitura</strong>: não cria, não altera e não
+      apaga nada no sistema.
+    </p>
+
+    <h2>Onde ela funciona</h2>
+    <p>
+      Exclusivamente em <code>procuradoria.betha.cloud</code>. Em qualquer outro site a
+      extensão fica inerte — ela não é carregada e não observa nada.
+    </p>
+
+    <h2>Quais dados ela acessa</h2>
+    <p>
+      Apenas os dados que a própria tela já mostra a você, e apenas enquanto você a usa:
+    </p>
+    <ul>
+      <li>as dívidas listadas na consulta que você acabou de fazer;</li>
+      <li>
+        o cadastro de referentes correspondente a essas dívidas — é dele que vem a
+        resposta “este imóvel tem corresponsável?”.
+      </li>
+    </ul>
+    <p>
+      As consultas são feitas aos mesmos endereços que a tela nativa usa
+      (<code>procuradoria.betha.cloud</code> e <code>api.procuradoria.betha.cloud</code>),
+      com a sessão que você já autenticou. A extensão não tem credenciais próprias e não
+      enxerga nada que você já não pudesse ver.
+    </p>
+
+    <h2>O que ela NÃO faz</h2>
+    <ul>
+      <li><strong>Não armazena nada.</strong> Não usa armazenamento do navegador, nem local, nem de sessão. Ao fechar a aba, nada permanece.</li>
+      <li><strong>Não envia dados para fora.</strong> Nenhuma informação sai do seu navegador para a Delta nem para terceiros. As únicas chamadas de rede são para a própria API da Betha.</li>
+      <li><strong>Não grava em log.</strong> Valores de filtro, inscrições e dados de contribuinte permanecem só em memória, enquanto a página está aberta.</li>
+      <li><strong>Não coleta métricas de uso.</strong> Nem anônimas, nem agregadas.</li>
+      <li><strong>Não usa rastreadores, anúncios ou analytics de terceiros.</strong></li>
+      <li><strong>Não altera dados.</strong> Todas as requisições que ela faz são de leitura.</li>
+    </ul>
+
+    <h2>Permissões e por quê</h2>
+    <ul>
+      <li>
+        <code>https://procuradoria.betha.cloud/*</code> — é a tela onde a extensão
+        trabalha. Ela acrescenta o filtro ao painel nativo e soma a cláusula de
+        corresponsável à consulta que a própria página já envia ao servidor.
+      </li>
+      <li>
+        <code>https://api.procuradoria.betha.cloud/*</code> — é onde vive o cadastro de
+        referentes, consultado para saber quais imóveis têm corresponsável. Esta permissão
+        é necessária porque a API não fica no mesmo domínio da tela.
+      </li>
+    </ul>
+    <p>
+      A extensão não pede nenhuma outra permissão. Em especial, não pede acesso a abas, a
+      histórico, a downloads nem a outros sites.
+    </p>
+
+    <h2>Quem filtra é o servidor</h2>
+    <p>
+      O filtro é aplicado acrescentando uma condição à consulta que a tela já faz — não
+      escondendo linhas depois que elas chegam. Isso é deliberado: a tela é paginada pelo
+      servidor e tem “Selecionar todas as páginas” alimentando ações reais, e um total de
+      rodapé que não corresponde ao conjunto faria a tela mentir sobre o próprio tamanho.
+      Se o servidor não aceitar a condição, a extensão <strong>não aplica nada</strong> e
+      informa o motivo.
+    </p>
+
+    <h2>Afiliação</h2>
+    <p>
+      Ferramenta independente, desenvolvida pela Delta Soluções em Informática para uso
+      próprio e de clientes que utilizam o Procuradoria Cloud. Não é produto da Betha
+      Sistemas e não possui vínculo com ela.
+    </p>
+
+    <h2>Contato</h2>
+    <p>
+      Dúvidas sobre esta política:
+      <a href="mailto:infraestrutura.delta@gmail.com">infraestrutura.delta@gmail.com</a>.
+    </p>
+
+    <footer>Delta Soluções em Informática · deltainf.com.br</footer>
+  </body>
+</html>
