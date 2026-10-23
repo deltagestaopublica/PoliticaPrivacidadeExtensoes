@@ -4,16 +4,17 @@ Este repositório existe por um motivo só: **hospedar as páginas de política 
 de navegador da Delta. A Chrome Web Store exige uma URL pública de política de privacidade para qualquer
 extensão que declare `host_permissions`, e o GitHub Pages (plano gratuito) só serve repositório público.
 
-Publicado pelo GitHub Pages (branch `main`, raiz do repositório):
+Publicado pelo GitHub Pages (branch `main`, raiz do repositório). A raiz
+(<https://deltagestaopublica.github.io/PoliticaPrivacidadeExtensoes/>) lista as políticas; cada extensão tem a sua página:
 
 | Extensão | Página |
 |---|---|
-| Filtro de Corresponsável (Procuradoria) | <https://deltagestaopublica.github.io/PoliticaPrivacidadeExtensoes/> (`index.html`) |
+| Filtro de Corresponsável (Procuradoria) | <https://deltagestaopublica.github.io/PoliticaPrivacidadeExtensoes/filtro-corresponsavel.html> |
 | Saldo da Conta (Tesouraria) | <https://deltagestaopublica.github.io/PoliticaPrivacidadeExtensoes/saldo-da-conta.html> |
 
 O repositório se chamava `privacidade-filtro-corresponsavel`; o endereço antigo do Pages deixou de
 funcionar com a troca de nome (o GitHub não redireciona o Pages) — o link de cada extensão na Web Store
-tem que apontar para o endereço acima.
+tem que apontar para a página dela, acima.
 
 ## O que NÃO está aqui
 
