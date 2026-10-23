@@ -1,0 +1,255 @@
+<title>Privacidade — Saldo da Conta (Tesouraria)</title>
+<style>
+  :root {
+    --bg: #f5f7fa;
+    --surface: #ffffff;
+    --text: #182432;
+    --text-muted: #58677a;
+    --accent: #1f6fb2;
+    --accent-2: #c46a2e;
+    --border: #dbe2ea;
+    --mono-bg: #eef1f5;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0d141c;
+      --surface: #141d28;
+      --text: #e6edf5;
+      --text-muted: #92a1b3;
+      --accent: #6fb1e8;
+      --accent-2: #eda069;
+      --border: #253141;
+      --mono-bg: #1b2530;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0d141c;
+    --surface: #141d28;
+    --text: #e6edf5;
+    --text-muted: #92a1b3;
+    --accent: #6fb1e8;
+    --accent-2: #eda069;
+    --border: #253141;
+    --mono-bg: #1b2530;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'IBM Plex Sans', system-ui, sans-serif;
+    line-height: 1.6;
+  }
+  main {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 56px 24px 96px;
+  }
+  h1, h2 {
+    font-family: 'Fraunces', Georgia, serif;
+    text-wrap: balance;
+    color: var(--text);
+  }
+  header.doc-head {
+    margin-bottom: 40px;
+  }
+  .eyebrow {
+    font-family: 'IBM Plex Mono', ui-monospace, monospace;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent-2);
+    margin: 0 0 10px;
+  }
+  h1 {
+    font-size: clamp(28px, 5vw, 38px);
+    font-weight: 600;
+    margin: 0 0 8px;
+  }
+  .subtitle {
+    color: var(--text-muted);
+    font-size: 15px;
+    margin: 0;
+  }
+  h2 {
+    font-size: 20px;
+    font-weight: 600;
+    margin: 40px 0 12px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+  }
+  h2:first-of-type { border-top: none; padding-top: 0; }
+  p { margin: 0 0 14px; }
+  ul { margin: 0 0 14px; padding-left: 22px; }
+  li { margin-bottom: 6px; }
+  code {
+    font-family: 'IBM Plex Mono', ui-monospace, monospace;
+    font-size: 0.9em;
+    background: var(--mono-bg);
+    padding: 1px 5px;
+    border-radius: 4px;
+  }
+  a { color: var(--accent); }
+
+  .summary {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px 24px;
+  }
+  .summary h2 {
+    margin-top: 0;
+    padding-top: 0;
+    border-top: none;
+    font-size: 16px;
+    font-family: 'IBM Plex Mono', ui-monospace, monospace;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+  .summary dl {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 10px 20px;
+    margin: 0;
+  }
+  .summary dt {
+    color: var(--text-muted);
+    font-size: 14px;
+    white-space: nowrap;
+  }
+  .summary dd {
+    margin: 0;
+    font-size: 14px;
+  }
+  .never {
+    margin-top: 18px;
+    padding-top: 16px;
+    border-top: 1px dashed var(--border);
+  }
+  .never p { margin: 0 0 8px; font-size: 14px; color: var(--text-muted); }
+  .never ul { margin-bottom: 0; }
+  .never li { font-size: 14px; }
+
+  footer {
+    margin-top: 48px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+    color: var(--text-muted);
+    font-size: 13px;
+  }
+
+  @media (max-width: 480px) {
+    .summary dl { grid-template-columns: 1fr; gap: 4px 0; }
+    .summary dt { margin-top: 8px; }
+  }
+</style>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+
+<main>
+  <header class="doc-head">
+    <p class="eyebrow">Delta · Saldo da Conta (Tesouraria)</p>
+    <h1>Política de Privacidade</h1>
+    <p class="subtitle">Extensão de navegador para Chrome · Versão 0.2.0 · Atualizada em 23 de outubro de 2026</p>
+  </header>
+
+  <section class="summary">
+    <h2>Resumo</h2>
+    <dl>
+      <dt>O que a extensão faz</dt>
+      <dd>Na tela de pagamento do Tesouraria (Cloud), da Betha, mostra o saldo da conta bancária escolhida e o saldo de cada recurso nessa conta. Se o usuário ligar o parâmetro, desabilita o Salvar quando o saldo do recurso não cobre o pagamento.</dd>
+      <dt>Onde ela funciona</dt>
+      <dd><code>tesouraria.betha.cloud</code> e a API <code>tes-api-rest.betha.cloud</code> — em nenhum outro site.</dd>
+      <dt>Dados que ela lê</dt>
+      <dd>Cabeçalhos de autenticação da sua própria sessão já logada, as contas, recursos e valores do pagamento aberto na tela, e os saldos retornados pela API.</dd>
+      <dt>Para onde esses dados vão</dt>
+      <dd>Para lugar nenhum além da própria API da Betha que você já usa. Nada é enviado a servidores da Delta ou de terceiros.</dd>
+      <dt>O que fica guardado</dt>
+      <dd>Só a sua preferência "Desabilitar o Salvar sem saldo no recurso" (ligada ou desligada), no armazenamento do próprio Chrome. Nenhum saldo, senha ou dado do pagamento é gravado.</dd>
+    </dl>
+    <div class="never">
+      <p>Esta extensão nunca:</p>
+      <ul>
+        <li>Envia dado para qualquer servidor que não seja o da própria Betha.</li>
+        <li>Grava, sincroniza ou faz backup de saldo, senha, token ou dado de pagamento.</li>
+        <li>Salva, altera ou confirma pagamentos — no máximo desabilita o botão Salvar, se você ligar essa opção.</li>
+        <li>Roda em nenhum site além do Tesouraria (Cloud).</li>
+        <li>Contém publicidade, rastreamento ou telemetria de qualquer tipo.</li>
+      </ul>
+    </div>
+  </section>
+
+  <h2>Quem mantém esta extensão</h2>
+  <p>
+    "Saldo da Conta" é mantida pela Delta Soluções em Informática para clientes que usam o Tesouraria
+    (Cloud), como solução enquanto a Betha não implementa nativamente a exibição de saldo bancário na
+    tela de pagamento — melhoria registrada e aprovada no ticket DSI-34193 do fornecedor.
+  </p>
+
+  <h2>Dados que a extensão acessa</h2>
+  <p>Pra fazer seu trabalho, a extensão lê estas informações, sempre da própria aba aberta no seu
+    navegador — nunca de um servidor à parte:</p>
+  <ul>
+    <li>
+      <strong>Cabeçalhos de autenticação da sua sessão</strong> (<code>Authorization</code>,
+      <code>App-Context</code>, <code>User-Access</code>) — os mesmos três que o próprio site do
+      Tesouraria Cloud já usa em toda chamada. A extensão os reaproveita pra fazer, em seu nome, a
+      mesma consulta de saldo que a tela "Gestão Bancária" nativa faz.
+    </li>
+    <li>
+      <strong>Contas, recursos e valores do pagamento aberto</strong> — o identificador interno de
+      cada conta bancária e de cada recurso escolhidos nas baixas, e o valor de cada um, lidos da
+      própria tela de pagamento.
+    </li>
+    <li>
+      <strong>Saldos</strong> que a API da Betha devolve para cada conta e para cada recurso dessa conta.
+    </li>
+  </ul>
+
+  <h2>Como esses dados são usados</h2>
+  <p>
+    Os cabeçalhos capturados são usados só pra montar as consultas à API oficial da Betha
+    (<code>POST /tesouraria/api/gestoes-bancarias/emissoes</code>), filtradas pela conta e, quando é o
+    caso, pelo recurso. Eles ficam apenas na memória da aba. Os saldos retornados também ficam só na
+    memória da aba, por até 30 segundos (pra não repetir a mesma consulta), e somem quando você fecha
+    ou recarrega a página.
+  </p>
+  <p>
+    Com os valores do pagamento e os saldos, a extensão mostra "Saldo da Conta" e "Saldo do recurso"
+    na tela e, se a opção estiver ligada, desabilita o Salvar enquanto algum recurso não tiver saldo
+    para o valor a pagar.
+  </p>
+  <p>
+    Não existe envio de dado pra fora do navegador além dessas consultas — que são exatamente as
+    mesmas que a tela nativa da Betha faz quando você usa a Gestão Bancária manualmente.
+  </p>
+
+  <h2>O que fica guardado</h2>
+  <p>
+    Só a preferência "Desabilitar o Salvar sem saldo no recurso", que você liga ou desliga na tela de
+    parâmetros da extensão. Ela fica em <code>chrome.storage.sync</code>, o armazenamento do próprio
+    Chrome, que acompanha a sua conta Google no navegador. Nenhum outro dado é gravado.
+  </p>
+
+  <h2>Permissões do navegador</h2>
+  <p>A extensão pede três permissões, nenhuma de acesso amplo à navegação:</p>
+  <ul>
+    <li><code>tesouraria.betha.cloud/*</code> — pra poder ler a tela de pagamento e mostrar os saldos ali.</li>
+    <li><code>tes-api-rest.betha.cloud/*</code> — pra poder chamar a API de saldo com os mesmos
+      cabeçalhos que o próprio site usa.</li>
+    <li><code>storage</code> — pra guardar a preferência descrita acima.</li>
+  </ul>
+
+  <h2>Compartilhamento com terceiros</h2>
+  <p>Nenhum. A extensão não vende, aluga, transfere nem compartilha nenhum dado com ninguém — nem
+    com a própria Delta. Não há coleta de analytics, publicidade ou qualquer serviço externo embutido.</p>
+
+  <h2>Alterações nesta política</h2>
+  <p>Qualquer mudança relevante no que a extensão acessa ou faz será refletida nesta página, com a
+    data no topo atualizada.</p>
+
+  <footer>
+    <p>Dúvidas sobre esta política: <a href="mailto:infraestrutura.delta@gmail.com">infraestrutura.delta@gmail.com</a></p>
+  </footer>
+</main>
