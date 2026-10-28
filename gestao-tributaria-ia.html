@@ -172,9 +172,9 @@
     <dl>
       <dt>O que a extensão faz</dt>
       <dd>É um pacote de soluções da Delta para os sistemas tributários da Betha. Cada solução contratada
-        entra como um módulo dentro do mesmo pacote; hoje o pacote tem cinco módulos: Filtro de
+        entra como um módulo dentro do mesmo pacote; hoje o pacote tem sete módulos: Filtro de
         Corresponsável, Notificação ao Baixar Econômico, Cancelamento de Débitos, Cancelamento da Origem do
-        Saldo e Baixa Manual em Lote.</dd>
+        Saldo, Baixa Manual em Lote, Transferência de Débitos e Transferência de Parcelamento.</dd>
       <dt>Onde ela funciona</dt>
       <dd>Só nas telas dos sistemas da Betha usadas pelos módulos ativos: Procuradoria Cloud
         (<code>procuradoria.betha.cloud</code>), Tributos Cloud (<code>tributos.betha.cloud</code>) e
@@ -183,14 +183,17 @@
       <dd>Cabeçalhos de autenticação da sua própria sessão já logada, e os dados que cada módulo usa: dívidas
         e referentes (Filtro), situação e débitos de um econômico (Notificação), parcelas em aberto
         (Cancelamento de Débitos), a origem de um saldo (Cancelamento da Origem do Saldo) e os lançamentos
-        escolhidos para baixa (Baixa Manual em Lote).</dd>
+        escolhidos para baixa (Baixa Manual em Lote), os débitos em aberto e os cadastros de origem e de
+        destino de uma transferência (Transferência de Débitos) e os parcelamentos de um contribuinte
+        (Transferência de Parcelamento).</dd>
       <dt>Para onde esses dados vão</dt>
       <dd>Os dados de cada módulo ficam na sua tela. Para conferir a licença, o token da sua sessão é
         enviado ao Catálogo de Soluções da Delta, junto com o número da entidade. O Cancelamento de
         Débitos e o Cancelamento da Origem do Saldo chamam, quando você confirma, o script da sua entidade
         pela plataforma de extensões da Betha. A Baixa Manual em Lote usa a ferramenta própria da Delta
-        (que recebe o token da sessão e a entidade só para conferir seu acesso e registrar o lote). Nada vai
-        para terceiros fora da Betha e da Delta.</dd>
+        (que recebe o token da sessão e a entidade só para conferir seu acesso e registrar o lote). As duas
+        Transferências executam, quando você confirma, os scripts publicados na sua entidade pela plataforma
+        de scripts da Betha. Nada vai para terceiros fora da Betha e da Delta.</dd>
       <dt>O que fica guardado</dt>
       <dd>Preferências e filas de trabalho de cada módulo (o pedido de notificação e o modelo escolhido; a
         fila de cancelamento em andamento; as pendências de cancelamento da origem), no armazenamento do
@@ -199,7 +202,8 @@
     <div class="never">
       <p>Esta extensão nunca:</p>
       <ul>
-        <li>Emite notificação, restitui, compensa, dá baixa ou cancela débito sem você confirmar na tela.</li>
+        <li>Emite notificação, restitui, compensa, dá baixa, cancela ou transfere débito ou parcelamento sem
+          você confirmar na tela.</li>
         <li>Guarda token, senha ou User-Access no navegador.</li>
         <li>Roda em telas além das usadas pelos módulos ativos do pacote.</li>
         <li>Contém publicidade, rastreamento ou telemetria de qualquer tipo.</li>
@@ -266,6 +270,24 @@
     não a guarda em lugar nenhum.
   </p>
 
+  <h3>Transferência de Débitos (Atendimento › Outras opções e Tributos)</h3>
+  <p>
+    Transfere débitos em aberto (lançamentos não inscritos em dívida ativa) de um contribuinte, econômico ou
+    imóvel para outro. Lista os débitos e busca o destino pela API do Tributos, com a sua sessão já aberta; quando
+    você confirma, executa o script de transferência publicado na sua entidade, pela plataforma de scripts da
+    Betha, e emite o Termo de Troca de Titularidade para assinatura (o PDF é montado no seu navegador e anexado
+    aos dois cadastros na própria Betha). Guarda no navegador o histórico dos termos emitidos, a numeração, os
+    textos e as preferências do termo, e um registro de erros para suporte — nada disso sai do seu navegador.
+  </p>
+
+  <h3>Transferência de Parcelamento (Tributos › Parcelamento de créditos)</h3>
+  <p>
+    Transfere o titular de parcelamentos em lote. Lista os parcelamentos e as parcelas pela API do Tributos, com
+    a sua sessão já aberta; quando você confirma, envia as transferências pela própria Betha (script publicado na
+    entidade) e acompanha o lote até a conferência. Guarda no navegador o caminho da API aprendido, a
+    configuração do envio e os lotes enviados, até a conferência.
+  </p>
+
   <h2>Verificação de licença</h2>
   <p>
     Cada módulo é licenciado por entidade, separadamente. Ao abrir uma tela de um módulo, a extensão
@@ -291,6 +313,10 @@
       conferência.</li>
     <li><strong>Filtro de Corresponsável e Baixa Manual em Lote:</strong> nada é gravado no navegador —
       os dados ficam só na tela ou na ferramenta da Delta, como descrito acima.</li>
+    <li><strong>Transferência de Débitos:</strong> o histórico e a numeração dos termos emitidos, os textos e as
+      preferências do termo, e um registro de erros para suporte.</li>
+    <li><strong>Transferência de Parcelamento:</strong> os lotes enviados (até a conferência), o caminho da API e a
+      configuração do envio.</li>
   </ul>
   <p>Nenhum dado de contribuinte, saldo, senha ou token é gravado.</p>
 
@@ -306,8 +332,8 @@
       Cancelamento da Origem do Saldo, pra chamar o script da entidade (webhook) na plataforma de
       extensões da Betha.</li>
     <li><code>plataforma-scripts.betha.cloud/*</code>, <code>plataforma-execucoes.betha.cloud/*</code>,
-      <code>baixaemlote.deltainf.com.br/*</code> — usadas pelo módulo Baixa Manual em Lote, pra buscar
-      lançamentos e registrar o histórico das baixas.</li>
+      <code>baixaemlote.deltainf.com.br/*</code> — usadas pela Baixa Manual em Lote e pela Transferência de
+      Parcelamento, pra buscar lançamentos e registrar o histórico das baixas.</li>
     <li><code>catalogodesolucoes.deltainf.com.br/*</code> — pra conferir a licença de cada módulo no
       Catálogo da Delta.</li>
     <li><code>plataforma-autorizacoes.betha.cloud/*</code> — pra ler a sua lista de acessos e descobrir a
