@@ -158,12 +158,13 @@
   <header class="doc-head">
     <p class="eyebrow">Delta · Gestão Contábil - IA</p>
     <h1>Política de privacidade — Gestão Contábil - IA (extensão do Chrome da Delta)</h1>
-    <p class="subtitle">Extensão de navegador para Chrome · Versão 1.0.0 · Publicada em 27 de outubro de 2026</p>
+    <p class="subtitle">Extensão de navegador para Chrome · Versão 1.1.0 · Atualizada em 11 de novembro de 2026</p>
   </header>
 
   <p>
     A Gestão Contábil - IA reúne as soluções da Delta para a área contábil e de tesouraria nos sistemas da
-    Betha. Hoje ela contém o módulo <strong>Saldo da Conta</strong>; cada módulo só funciona para a entidade
+    Betha. Hoje ela contém os módulos <strong>Saldo da Conta</strong> e <strong>Como Corrigir a
+    Escrituração</strong>; cada módulo só funciona para a entidade
     que tem a liberação dele no Catálogo de Soluções da Delta.
   </p>
 
@@ -175,17 +176,20 @@
         solução contratada entra como um módulo dentro do mesmo pacote; hoje o pacote tem o módulo Saldo
         da Conta, que na tela de pagamento do Tesouraria (Cloud) mostra o saldo da conta bancária
         escolhida e o saldo de cada recurso nessa conta, e pode desabilitar o Salvar quando o saldo não
-        cobre o pagamento.</dd>
+        cobre o pagamento. O módulo Como Corrigir a Escrituração, no Contábil (Cloud), explica nas
+        janelas de uma escrituração inconsistente por que ela não fecha e como corrigir.</dd>
       <dt>Onde ela funciona</dt>
       <dd>Só nas telas dos sistemas da Betha usadas pelos módulos ativos. O módulo Saldo da Conta funciona
-        na tela do Tesouraria (<code>tesouraria.betha.cloud</code>). A extensão conversa com a API do
+        na tela do Tesouraria (<code>tesouraria.betha.cloud</code>); o Como Corrigir a Escrituração, nas
+        telas de escrituração do Contábil (<code>contabil.betha.cloud</code>). A extensão conversa com a API do
         Tesouraria (<code>tes-api-rest.betha.cloud</code>), com a lista de acessos da Betha
         (<code>plataforma-autorizacoes.betha.cloud</code>) e com o Catálogo de Soluções da Delta
         (<code>catalogodesolucoes.deltainf.com.br</code>), para conferir a licença de cada módulo.</dd>
       <dt>Dados que ela lê</dt>
       <dd>Cabeçalhos de autenticação da sua própria sessão já logada, e os dados que cada módulo usa: no
         caso do Saldo da Conta, as contas, recursos e valores do pagamento aberto na tela, e os saldos
-        retornados pela API.</dd>
+        retornados pela API; no Como Corrigir a Escrituração, o documento aberto na janela e as receitas
+        dele, lidos com a própria sessão da tela.</dd>
       <dt>Para onde esses dados vão</dt>
       <dd>Os dados de cada módulo ficam na sua tela. Para conferir a licença, o token da sua sessão é
         enviado ao Catálogo de Soluções da Delta, junto com o número da entidade, e a Delta registra que
@@ -197,7 +201,7 @@
     <div class="never">
       <p>Esta extensão nunca:</p>
       <ul>
-        <li>Envia saldo, conta, recurso ou valor de pagamento para fora da Betha.</li>
+        <li>Envia saldo, conta, recurso, valor de pagamento ou dado da escrituração para fora da Betha.</li>
         <li>Grava, sincroniza ou faz backup de saldo, senha, token ou dado de pagamento.</li>
         <li>Salva, altera ou confirma pagamentos — no máximo desabilita o botão Salvar, se você ligar essa
           opção no Saldo da Conta.</li>
@@ -259,6 +263,30 @@
     para o valor a pagar. As consultas de saldo são exatamente as mesmas que a tela nativa da Betha faz
     quando você usa a Gestão Bancária manualmente.
   </p>
+  <h3>Módulo Como Corrigir a Escrituração</h3>
+  <p>
+    No Contábil (Cloud), em Escriturações de documentos, quando uma arrecadação orçamentária fica
+    inconsistente por falta de equivalência da receita com uma VPA, mostra na janela "Visualizando registro
+    contábil" qual receita está sem equivalência, os passos para corrigir e um atalho para as equivalências.
+    Na janela "Editando escrituração", um ícone de ajuda no evento sem conta abre a mesma explicação.
+  </p>
+  <p>Para isso, lê estas informações:</p>
+  <ul>
+    <li>
+      <strong>O documento aberto na janela</strong> — o identificador e o tipo do documento, lidos da
+      própria tela.
+    </li>
+    <li>
+      <strong>As receitas do documento</strong> — código, descrição e situação, pela mesma API que a tela
+      do Contábil usa (<code>esc-api-rest.betha.cloud</code>). A chamada é feita pela própria página, com a
+      sessão de quem está logado; o módulo não lê nem guarda token.
+    </li>
+  </ul>
+  <p>
+    Nada disso sai da tela nem fica guardado. O módulo só lê e orienta: não grava, altera nem escritura
+    nada na Betha. O botão "Copiar código da receita" coloca o código na sua área de transferência, só
+    quando você clica.
+  </p>
   <p>
     Conforme novos módulos forem adicionados a este pacote, uma subseção como esta será publicada para
     cada um deles.
@@ -291,6 +319,8 @@
       pagamento e mostrar os saldos ali.</li>
     <li><code>tes-api-rest.betha.cloud/*</code> — usada pelo módulo Saldo da Conta, pra poder chamar a API
       de saldo com os mesmos cabeçalhos que o próprio site usa.</li>
+    <li><code>contabil.betha.cloud/*</code> — usada pelo módulo Como Corrigir a Escrituração, pra mostrar a
+      explicação nas janelas de escrituração.</li>
     <li><code>catalogodesolucoes.deltainf.com.br/*</code> — pra conferir a licença de cada módulo no
       Catálogo da Delta.</li>
     <li><code>plataforma-autorizacoes.betha.cloud/*</code> — pra ler a sua lista de acessos e descobrir a
